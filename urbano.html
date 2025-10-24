@@ -30,7 +30,7 @@
                 <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
         </a>
-        <h2>Abbonamento annuale studenti <br> urbano</h2>
+        <h2>Abbonamento annuale studenti <br> extraurbano</h2>
         <span class="menu-dots" id="edit-toggle">&#8942;</span>
     </header>
 
@@ -93,8 +93,10 @@
 
     <script>
         // Funzione per caricare i dati dal file JSON esterno
+        const ticketId = "biglietto_3"; // cambia 1, 2, 3 per ogni biglietto
         function caricaDatiLocale() {
-    const datiString = localStorage.getItem('datiUtente');
+        const datiString = localStorage.getItem(ticketId);
+
     if (datiString) {
         return JSON.parse(datiString);
     } else {
@@ -214,7 +216,7 @@ function aggiornaUI(dati) {
                     citta: document.getElementById('user-city').textContent
                 };
                 
-                localStorage.setItem('datiUtente', JSON.stringify(nuoviDati));
+                
                 alert('Dati salvati localmente!');
 
                 
@@ -231,5 +233,4 @@ function aggiornaUI(dati) {
         });
     </script>
 </body>
-
 </html>
