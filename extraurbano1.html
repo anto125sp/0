@@ -93,8 +93,10 @@
 
     <script>
         // Funzione per caricare i dati dal file JSON esterno
+        const ticketId = "biglietto_1"; // cambia 1, 2, 3 per ogni biglietto
         function caricaDatiLocale() {
-    const datiString = localStorage.getItem('datiUtente');
+        const datiString = localStorage.getItem(ticketId);
+
     if (datiString) {
         return JSON.parse(datiString);
     } else {
@@ -214,7 +216,7 @@ function aggiornaUI(dati) {
                     citta: document.getElementById('user-city').textContent
                 };
                 
-                localStorage.setItem('datiUtente', JSON.stringify(nuoviDati));
+                
                 alert('Dati salvati localmente!');
 
                 
