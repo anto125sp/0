@@ -8,9 +8,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#009688">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="src/pulltorefresh.min.js"></script>
 </head>
 <body>
-
     <div id="loading-animation-container">
         <lottie-player
             id="lottie-animation"
@@ -22,7 +22,6 @@
             loop>
         </lottie-player>
     </div>
-
     <header class="ticket-header">
         <a href="menu.html" id="open-dropticket">
             <svg class="back-arrow-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +32,6 @@
         <h2>Abbonamento annuale studenti <br> extraurbano</h2>
         <span class="menu-dots" id="edit-toggle">&#8942;</span>
     </header>
-
     <section class="video-container">
         <video autoplay loop muted playsinline>
             <source src="src/anim.mp4" type="video/mp4">
@@ -47,7 +45,6 @@
             <span id="remaining-time"></span>
         </div>
     </section>
-
     <main class="ticket-body">
         <section class="qr-section">
             <div class="qr-placeholder">
@@ -55,7 +52,6 @@
             </div>
             <p class="date-range">01/09/25 - 31/08/26</p>
         </section>
-
         <section class="details-list">
             <div class="detail-row">
                 <span class="label">Codice</span>
@@ -86,11 +82,8 @@
                 <span class="value">03 set, 12:37</span>
             </div>
         </section>
-        
-        <!-- Pulsante Salva (inizialmente nascosto) -->
         <button id="save-button" style="display: none; margin-top: 20px; padding: 10px; background: #009688; color: white; border: none; border-radius: 5px; width: 100%;">Salva Modifiche</button>
     </main>
-
     <script>
         // Funzione per caricare i dati dal file JSON esterno
         const ticketId = "biglietto_2"; // cambia 1, 2, 3 per ogni biglietto
@@ -116,8 +109,6 @@ function aggiornaUI(dati) {
     document.getElementById('user-city').textContent = dati.citta;
 }
 
-
-        
 
         document.addEventListener('DOMContentLoaded', () => {
             const loadingAnimationContainer = document.getElementById('loading-animation-container');
@@ -231,6 +222,14 @@ function aggiornaUI(dati) {
                 editToggle.innerHTML = '&#8942;';
             });
         });
+    </script>
+    <script>
+      PullToRefresh.init({
+        mainElement: 'body',
+        onRefresh() {
+          window.location.reload();
+        }
+      });
     </script>
 </body>
 </html>
